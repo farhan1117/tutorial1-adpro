@@ -15,3 +15,5 @@ Seketika saya sadar bahwa produk-produk yang dibuat oleh aplikasi belum menambah
 Jadi saya mencari bagaimana cara membuat productId secara acak terlebih dahulu dengan asumsi aplikasi tersebut akan membuatnya untuk data setiap produk.
 Dengan referensi : https://www.baeldung.com/java-uuid. Saya mencoba untuk mengimplementasi java UUID untuk men-generate random produkId.
 Ketika fitur edit berhasil, dengan menambahkan pengambilan id dari produk yang mau diedit. 
+Selanjutnya fitur delete cukup mudah dengan menambahkan beberapa method pada productRepository, ProductService, 
+dan ProductServiceImpl. Mengambil data dari List dan remove sesuai productId yang dimiliki.

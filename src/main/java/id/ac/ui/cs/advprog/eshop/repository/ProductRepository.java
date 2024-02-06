@@ -39,7 +39,12 @@ public class ProductRepository {
     }
 
     public void delete(String productId) {
-        productData.removeIf(product -> product.getProductId().equals(productId));
+        for (Product product : productData) {
+            if (product.getProductId().equals(productId)) {
+                productData.remove(product);
+                break; // Assuming productId is unique, so we can exit the loop once found
+            }
+        }
     }
 
 }
