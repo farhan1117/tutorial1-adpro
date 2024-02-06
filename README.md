@@ -14,3 +14,4 @@ Saya sempat terhambat dengan aplikasi jika saya menekan tombol edit yang sudah s
 Seketika saya sadar bahwa produk-produk yang dibuat oleh aplikasi belum menambahkan fitur untuk membuat productId untuk setiap produk. 
 Jadi saya mencari bagaimana cara membuat productId secara acak terlebih dahulu dengan asumsi aplikasi tersebut akan membuatnya untuk data setiap produk.
 Dengan referensi : https://www.baeldung.com/java-uuid. Saya mencoba untuk mengimplementasi java UUID untuk men-generate random produkId.
+Ketika fitur edit berhasil, dengan menambahkan pengambilan id dari produk yang mau diedit. 
