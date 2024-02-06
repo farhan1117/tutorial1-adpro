@@ -27,4 +27,34 @@ class ProductTest {
     void testGetProductQuantity(){
         assertEquals(100, this.product.getProductQuantity());
     }
+
+    @Test
+    void testGetFalseProductId(){
+        assertNotEquals("0", this.product.getProductId());
+    }
+
+    @Test
+    void testGetFalseProductName(){
+        assertNotEquals("test", this.product.getProductName());
+    }
+
+    @Test
+    void testGetFalseProductQuantity(){
+        assertNotEquals("0", this.product.getProductQuantity());
+    }
+
+    @Test
+    void testProductIdNotNull(){
+        assertNotNull(this.product.getProductId());
+    }
+
+    @Test
+    void testProductNameNotNull(){
+        assertNotNull(this.product.getProductName());
+    }
+
+    @Test
+    void testProductQuantityNotNull(){
+        assertNotNull(this.product.getProductQuantity());
+    }
 }

@@ -62,4 +62,55 @@ class ProductRepositoryTest {
         assertEquals(product2.getProductId(), savedProduct.getProductId());
         assertFalse(productIterator.hasNext());
     }
+
+    @Test
+    void testEditProductName() {
+        Product product = new Product();
+        product.setProductId("eb558e9f-1c39-460e-8860-71af6af63bd6");
+        product.setProductName("Sampo Cap Bambang");
+        product.setProductQuantity(100);
+        productRepository.create(product);
+
+        product.setProductName("Sampo Cap Updated");
+        productRepository.edit(product);
+
+        Product editedProduct = productRepository.findById(product.getProductId());
+        assertNotNull(editedProduct);
+        assertEquals(product.getProductName(), editedProduct.getProductName());
+        assertNotEquals("Sampo Cap Bambang", editedProduct.getProductName());
+    }
+
+    @Test
+    void testEditProductQuantity() {
+        Product product = new Product();
+        product.setProductId("eb558e9f-1c39-460e-8860-71af6af63bd6");
+        product.setProductName("Sampo Cap Bambang");
+        product.setProductQuantity(100);
+        productRepository.create(product);
+
+        product.setProductQuantity(200);
+        productRepository.edit(product);
+
+        Product editedProduct = productRepository.findById(product.getProductId());
+
+        assertNotNull(editedProduct);
+        assertEquals(product.getProductQuantity(), editedProduct.getProductQuantity());
+    }
+
+    @Test
+    void testDeleteProduct() {
+        // Create a product
+        Product product = new Product();
+        product.setProductId("eb558e9f-1c39-460e-8860-71af6af63bd6");
+        product.setProductName("Sampo Cap Bambang");
+        product.setProductQuantity(100);
+        productRepository.create(product);
+
+        // Delete the product from the repository
+        productRepository.delete(product.getProductId());
+
+        // Verify that the deleted product is not present in the repository
+        Product deletedProduct = productRepository.findById(product.getProductId());
+        assertNull(deletedProduct);
+    }
 }
