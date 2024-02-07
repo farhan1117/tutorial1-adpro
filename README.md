@@ -14,11 +14,17 @@ Saya sempat terhambat dengan aplikasi jika saya menekan tombol edit yang sudah s
 Seketika saya sadar bahwa produk-produk yang dibuat oleh aplikasi belum menambahkan fitur untuk membuat productId untuk setiap produk. 
 Jadi saya mencari bagaimana cara membuat productId secara acak terlebih dahulu dengan asumsi aplikasi tersebut akan membuatnya untuk data setiap produk.
 Dengan referensi : https://www.baeldung.com/java-uuid. Saya mencoba untuk mengimplementasi java UUID untuk men-generate random produkId.
-<<<<<<< HEAD
 Ketika fitur edit berhasil, dengan menambahkan pengambilan id dari produk yang mau diedit. 
 Selanjutnya fitur delete cukup mudah dengan menambahkan beberapa method pada productRepository, ProductService, 
 dan ProductServiceImpl. Mengambil data dari List dan remove sesuai productId yang dimiliki.
-=======
 Ketika fitur edit berhasil, dengan menambahkan pengambilan id dari produk yang mau diedit saya dapat menampilkan product yang mau diedit pada halaman EditProduct.
 Halaman tersebut dapat mengubah Nama dan Jumlah dari produk yang sudah dipilih. 
->>>>>>> 5e261460fbf466849dda41fe065250a35a70f8ea
+
+Reflections2
+
+Setelah menulis unit test yang diminta dan mencoba beberapa yang cukup dasar, saya menyadari
+bahwa banyaknya skenario untuk sebuah testing untuk mengecek jika suatu aplikasi berhasil menangkap
+berbagai input dari user. Unit test dari sebuah fitur setidaknya dapat mengetes fungsi dasar terlebih dahulu,
+layaknya suatu input, ada tidaknya input, jika input tidak memiliki data, dan selanjutnya. 
+Selanjutnya saya mencoba untuk membuat functinal test dasar untuk halaman CreateProduct. 
+Mengecek nama dari Page dan juga jika menerima input pada form, akan terlihat pada halaman ProductList.
