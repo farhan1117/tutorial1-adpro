@@ -14,7 +14,7 @@ java {
 }
 sonar {
 	properties {
-		property("sonar.projectKey", "tutorial1-adpro")
+		property("sonar.projectKey", "farhan1117_tutorial1-adpro")
 		property("sonar.organization", "farhan1117")
 		property("sonar.host.url", "https://sonarcloud.io")
 	}
