@@ -49,5 +49,7 @@ Setelah itu juga perlu di modifikasi file build.gradle.kts untuk mengimplementas
 referensi ini, https://docs.sonarsource.com/sonarcloud/advanced-setup/ci-based-analysis/sonarscanner-for-gradle/. 
 Setelah itu melakukan deployment menggunakan Dockerfile untuk membuat suatu Docker image yang akan di-deploy oleh web Koyeb.
 Terakhir menurut saya aplikasi dan implementasi yang sudah saya buat pada tutorial ini lumayan membuka wawasan baru. 
-Workflow yang says sudah buat maih bisa diubah atau dimodifikasi untuk praktek selanjutnya. Dimana mungkin bisa menambahkan
-dan mengganti code yang lebih baik lagi. Lalu membuat dan memenuhi coverage dari code tersebut.
+Workflow yang saya sudah buat masih bisa diubah atau dimodifikasi untuk praktek selanjutnya. Dimana mungkin bisa menambahkan
+dan mengganti code yang lebih baik lagi. Lalu membuat dan memenuhi coverage dari code tersebut. Namun dari modul tutorial 2 ini,
+Code yang sudah dibuat sudah memenuhi dasar dari CI/CD, dengan menggunakan automation untuk test dan deployment ketika 
+adanya perintah push dengan git ke github.
