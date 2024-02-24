@@ -53,3 +53,30 @@ Workflow yang saya sudah buat masih bisa diubah atau dimodifikasi untuk praktek 
 dan mengganti code yang lebih baik lagi. Lalu membuat dan memenuhi coverage dari code tersebut. Namun dari modul tutorial 2 ini,
 Code yang sudah dibuat sudah memenuhi dasar dari CI/CD, dengan menggunakan automation untuk test dan deployment ketika 
 adanya perintah push dengan git ke github.
+
+## Reflections Tutorial3
+
+Dalam tutorial 3 ini saya diajarkan tentang pengaplikasian prinsip SOLID desain untuk membuat suatu aplikasi. Prinsip 
+tersebut terdiri dari 5 prinsip, Explain the disadvantages of not applying SOLID principles to your project with examples.
+(SRP), Open-Closed Principle (OCP), Liskov Substitution 
+Principle (LSP), Interface Segregation Principle (ISP), dan Dependency Inversions Principle (DIP). Prinsip prinsip 
+tersebut diaplikasikan ke aplikasi tutorial saya. Dengan menambahkan suatu Objek baru dengan suatu Car, menambahkan Model,
+Repository, Service, Controller, dan HTML halaman. Pertama prinsip yang saya lakukan untuk tutorial ini adalah Single 
+Responsibility Principle yang memodifikasi fitur dari CarServices yang tadinya tergabung di satu file .java, di pecahkan
+menjadi fungsi fungsi spesifik masing-masing, memiliki tanggung jawab sendiri terhadap fitur yang dilakukan. Selanjutnya 
+Prinsip yang digunakan adalah Interface Segregation Principle, dimana adanya class yang memiliki kesamaan dalam suatu
+fitur dapat berkerja bersama dan tidak membuat class lain yang kurang berguna.
+
+Prinsip SOLID digunakan untuk mempermudah kepanjangan dari pembuatan suatu project. Bisa dilihat dari project tutorial 
+yang dibuat ini. Dengan penerapan prinsip SOLID, aplikasi ini akan mudah untuk dijaga/maintenance apabila terjadi bug 
+dan harus diperbaiki, atau inginnya menambahkan fitur baru pada projectnya seperti untuk menampilkan detail spesifik 
+suatu mobil dapat dengan mudah menambahkan fitur tersebut dengan membuat class baru dan memanggil sesuai nama dari fitur.
+
+Jika tidak mengimplementasikan prinsip SOLID, dalam jangka panjang, kelanjutan dari suatu project akan terkesan susah
+untuk diadakan perbaikan dan update. Dimana jika ingin menambahkan fitur, perlu track back, mengecek banyaknya fungsi 
+dari class class yang tiba-tiba tidak relevan dalam fitur tersebut. Lalu butuhnya waktu yang lama untuk mengecek jika 
+ada kesalahan dari suatu class karena memiliki resiko akan mempengaruhi class lainnya, contoh CarService sebelum dipecah
+menjadi fitur masing-masing, update dan perbaikan akan diperlukan untuk membaca line code yang panjang didalam satu file
+yang mencakup semua fitur.
+
+
