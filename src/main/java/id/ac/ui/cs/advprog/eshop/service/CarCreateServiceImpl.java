@@ -10,6 +10,7 @@ public class CarCreateServiceImpl implements CarCreateService{
     private CarInterfaceRepository carRepository;
     @Override
     public Car create(Car car){
+        carRepository.create(car);
         return car;
     }
 }

@@ -67,11 +67,11 @@ class ProductControllerTest {
     }
 
     @Test
-    void testEditProductPost() {
+    void testUpdateProductPost() {
         Product product = new Product();
         String viewName = productController.editProductPost(product, model);
         assertEquals("redirect:list", viewName);
-        verify(productService).edit(product);
+        verify(productService).update(product.getProductId(), product);
     }
 
     @Test

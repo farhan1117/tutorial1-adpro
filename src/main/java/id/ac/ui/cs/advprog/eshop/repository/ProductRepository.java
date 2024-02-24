@@ -6,11 +6,14 @@ import org.springframework.stereotype.Repository;
 import java.util.*;
 
 @Repository
-public class ProductRepository {
+public class ProductRepository implements ProductInterfaceRepository {
     private List<Product> productData = new ArrayList<>();
 
-    public Product create(Product product) {
-        product.setProductId(UUID.randomUUID().toString());
+    public Product create(Product product){
+        if(product.getProductId() == null){
+            UUID uuid = UUID.randomUUID();
+            product.setProductId(uuid.toString());
+        }
         productData.add(product);
         return product;
     }
@@ -26,16 +29,18 @@ public class ProductRepository {
                 .orElse(null);
     }
 
-    public void edit(Product updatedProduct) {
+    public Product update(String id, Product updatedProduct) {
         for (int i = 0; i < productData.size(); i++) {
             Product existingProduct = productData.get(i);
             if (existingProduct.getProductId().equals(updatedProduct.getProductId())) {
                 // Update existing product
                 existingProduct.setProductName(updatedProduct.getProductName());
                 existingProduct.setProductQuantity(updatedProduct.getProductQuantity());
-                break;
+                return existingProduct;
             }
         }
+        return null;
+
     }
 
     public void delete(String productId) {
