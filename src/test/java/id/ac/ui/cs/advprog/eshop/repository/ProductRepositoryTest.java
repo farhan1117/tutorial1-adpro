@@ -72,7 +72,7 @@ class ProductRepositoryTest {
         productRepository.create(product);
 
         product.setProductName("Sampo Cap Updated");
-        productRepository.update(product);
+        productRepository.update(product.getProductId(), product);
 
         Product editedProduct = productRepository.findById(product.getProductId());
         assertNotNull(editedProduct);
@@ -89,7 +89,7 @@ class ProductRepositoryTest {
         productRepository.create(product);
 
         product.setProductQuantity(200);
-        productRepository.update(product);
+        productRepository.update(product.getProductId(), product);
 
         Product editedProduct = productRepository.findById(product.getProductId());
 

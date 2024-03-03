@@ -41,7 +41,7 @@ public class OrderTest {
         assertEquals("Sabun Cap Usep", order.getProducts().get(1).getProductName());
 
         assertEquals("13652556-012a-4c07-b546-54eb1396d79b", order.getId());
-        assertEquals(1708560000L, order.getOrdertime());
+        assertEquals(1708560000L, order.getOrderTime());
         assertEquals("Safira Sudrajat", order.getAuthor());
         assertEquals("WAITING_PAYMENT", order.getStatus());
     }
@@ -62,7 +62,7 @@ public class OrderTest {
     void testSetStatusToCancelled(){
         Order order = new Order("13652556-012a-4c07-b546-54eb1396d79b",
             this.products,1708560000L, "Safira Sudrajat");
-        order.getStatus("CANCELLED");
+        order.setStatus("CANCELLED");
         assertEquals("CANCELLED", order.getStatus());
     }
     @Test
