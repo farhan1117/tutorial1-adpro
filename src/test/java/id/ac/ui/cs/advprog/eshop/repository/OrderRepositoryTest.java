@@ -21,7 +21,7 @@ class OrderRepositoryTest {
         product1.setProductId("eb558e9f-1c39-460e-8860-71af6af63bd6");
         product1.setProductName("Sampo Cap Bambang");
         product1.setProductQuantity(2);
-        products.add(product1):
+        products.add(product1);
 
         orders = new ArrayList<>();
         Order order1 = new Order("13652556-012a-4c07-b546-54eb1396d79b",
@@ -40,7 +40,7 @@ class OrderRepositoryTest {
         Order order = orders.get(1);
         Order result = orderRepository.save(order);
 
-        Order findResult = orderRepositry.findById(orders.get(1).getId());
+        Order findResult = orderRepository.findById(orders.get(1).getId());
         assertEquals(order.getId(), result.getId());
         assertEquals(order.getId(), findResult.getId());
         assertEquals(order.getOrderTime(), findResult.getOrderTime());
@@ -56,7 +56,7 @@ class OrderRepositoryTest {
                 order.getAuthor(), OrderStatus.SUCCESS.getValue());
         Order result = orderRepository.save(newOrder);
 
-        Order findResult = orderRepositry.findById(orders.get(1).getId());
+        Order findResult = orderRepository.findById(orders.get(1).getId());
         assertEquals(order.getId(), result.getId());
         assertEquals(order.getId(), findResult.getId());
         assertEquals(order.getOrderTime(), findResult.getOrderTime());
@@ -70,8 +70,8 @@ class OrderRepositoryTest {
             orderRepository.save(order);
         }
 
-        Order findResult = orderRepositry.findById(orders.get(1).getId());
-        assertEquals(orders.get(1).getId(), result.getId());
+        Order findResult = orderRepository.findById(orders.get(1).getId());
+        assertEquals(orders.get(1).getId(), findResult.getId());
         assertEquals(orders.get(1).getId(), findResult.getId());
         assertEquals(orders.get(1).getOrderTime(), findResult.getOrderTime());
         assertEquals(orders.get(1).getAuthor(), findResult.getAuthor());
@@ -93,7 +93,7 @@ class OrderRepositoryTest {
             orderRepository.save(order);
         }
 
-        List<Order> orderList = orderRepositry.findAllByAuthor(
+        List<Order> orderList = orderRepository.findAllByAuthor(
                 orders.get(1).getAuthor().toLowerCase());
         assertEquals(2, orderList.size());
     }
@@ -102,7 +102,7 @@ class OrderRepositoryTest {
     void testFindAllByAuthorIfAllLowercase(){
         orderRepository.save(orders.get(1));
 
-        List<Order> orderList = orderRepositry.findAllByAuthor(
+        List<Order> orderList = orderRepository.findAllByAuthor(
                 orders.get(1).getAuthor().toLowerCase());
         assertTrue(orderList.isEmpty());
     }
