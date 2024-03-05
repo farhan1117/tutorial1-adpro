@@ -23,7 +23,7 @@ public class OrderTest {
         this.products.add(product2);
     }
     @Test
-    void testCreateOrderemptyProduct(){
+    void testCreateOrderEmptyProduct(){
         this.products.clear();
 
         assertThrows(IllegalArgumentException.class, () -> {
