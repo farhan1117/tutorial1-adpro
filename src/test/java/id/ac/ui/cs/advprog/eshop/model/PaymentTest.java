@@ -51,7 +51,7 @@ public class PaymentTest {
     }
 
     @Test
-    void testSetStatusToRejected(){
+    void testSetStatusToInvalidStatus(){
         assertThrows(IllegalArgumentException.class, () -> {
             Payment payment = new  Payment("12345678", "voucherCode", "MEOW", paymentData);
         });
