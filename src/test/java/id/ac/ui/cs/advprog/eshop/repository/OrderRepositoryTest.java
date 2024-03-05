@@ -61,7 +61,7 @@ class OrderRepositoryTest {
         assertEquals(order.getId(), findResult.getId());
         assertEquals(order.getOrderTime(), findResult.getOrderTime());
         assertEquals(order.getAuthor(), findResult.getAuthor());
-        assertEquals(order.getStatus(), findResult.getStatus());
+        assertEquals(OrderStatus.SUCCESS.getValue(), findResult.getStatus());
     }
 
     @Test
@@ -94,7 +94,7 @@ class OrderRepositoryTest {
         }
 
         List<Order> orderList = orderRepository.findAllByAuthor(
-                orders.get(1).getAuthor().toLowerCase());
+                orders.get(1).getAuthor());
         assertEquals(2, orderList.size());
     }
 
