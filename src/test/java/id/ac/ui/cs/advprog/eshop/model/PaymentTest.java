@@ -1,5 +1,7 @@
 package id.ac.ui.cs.advprog.eshop.model;
 
+import id.ac.ui.cs.advprog.eshop.enums.OrderStatus;
+import id.ac.ui.cs.advprog.eshop.enums.PaymentStatus;
 import org.junit.jupiter.api.*;
 
 import java.util.*;
@@ -29,31 +31,40 @@ public class PaymentTest {
     }
 
     @Test
-    void testCreatePayment(){
-        Payment payment = new Payment("12345678", "voucherCode", "SUCCESS", paymentData);
+    void testAddPayment(){
+        Payment payment = new Payment("12345678", "voucherCode", paymentData);
         assertEquals("12345678", payment.getId());
         assertEquals("voucherCode", payment.getMethod());
-        assertEquals("SUCCESS", payment.getStatus());
+        assertEquals(paymentData.get("voucherCode"), payment.getPaymentData().get("voucherCode"));
+        assertEquals(PaymentStatus.SUCCESS.getValue(), payment.getStatus());
     }
 
     @Test
-    void testCreatePaymentInvalidMethod(){
+    void testAddPaymentInvalidMethod(){
         assertThrows(IllegalArgumentException.class, () -> {
-            Payment payment = new  Payment("12345678", "voucherCode", "MEOW", paymentData);
+            Payment payment = new  Payment("12345678", "debitCode", paymentData);
         });
     }
 
     @Test
+    void testAddPaymentInvalidVoucherCode(){
+        paymentData.put("voucherCode", "1234abc567");
+        Payment payment = new Payment("1234abc5678", "voucherCode", paymentData);
+        assertNotEquals(PaymentStatus.SUCCESS.getValue(), payment);
+    }
+
+    @Test
     void testSetStatusToRejected(){
-        Payment payment = new Payment("12345678", "voucherCode", "SUCCESS", paymentData);
+        Payment payment = new Payment("12345678", "voucherCode", paymentData);
         payment.setStatus("REJECTED");
-        assertEquals("REJECTED", payment.getStatus());
+        assertEquals(PaymentStatus.REJECTED.getValue(), payment.getStatus());
     }
 
     @Test
     void testSetStatusToInvalidStatus(){
         assertThrows(IllegalArgumentException.class, () -> {
-            Payment payment = new  Payment("12345678", "voucherCode", "MEOW", paymentData);
+            Payment payment = new Payment("12345678", "voucherCode", paymentData);
+            payment.setStatus("MEOW");
         });
     }
 
