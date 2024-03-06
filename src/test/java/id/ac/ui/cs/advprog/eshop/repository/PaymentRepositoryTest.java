@@ -13,7 +13,7 @@ import static org.junit.jupiter.api.Assertions.*;
 public class PaymentRepositoryTest {
     PaymentRepository paymentRepository;
     List<Order> orders;
-    List<Map<String, String>> paymentDatas;
+    List<Map<String, String>> paymentDataList;
 
     @BeforeEach
     void setUp(){
@@ -42,33 +42,28 @@ public class PaymentRepositoryTest {
         voucherData.put("voucherCode", "ESHOP1234ABC5678");
         cashOnDeliveryData.put("address", "Fasilkom");
         cashOnDeliveryData.put("deliveryFee", "10000");
-
-        this.paymentDatas.add(voucherData);
-        this.paymentDatas.add(cashOnDeliveryData);
+        this.paymentDataList = new ArrayList<>();
+        this.paymentDataList.add(voucherData);
+        this.paymentDataList.add(cashOnDeliveryData);
     }
     @Test
-    void testAddPaymentUsingVoucher() {
-        Order order = orders.get(1);
+    void testAddPayment() {
+        Order order1 = orders.get(1);
+        Order order2 = orders.get(2);
 
-        Payment result = paymentRepository.addPayment(order, "voucherCode", paymentData);
-        assertNotNull(result);
-        assertEquals("voucherCode", result.getMethod());
+        this.paymentRepository.addPayment(order1, "voucherCode", this.paymentDataList.get(0));
+        this.paymentRepository.addPayment(order2, "cashOnDelivery", this.paymentDataList.get(1));
+
+        assertNotNull(paymentRepository);
+        assertEquals("voucherCode", paymentRepository.getMethod());
     }
 
-    @Test
-    void testAddPaymentUsingCashOnDelivery() {
-        Order order = orders.get(1);
-
-        Payment result = paymentRepository.addPayment(order, "cashOnDelivery", paymentData);
-        assertNotNull(result);
-        assertEquals("cashOnDelivery", result.getMethod());
-    }
 
     @Test
     void testGetPaymentIfIdFound() {
         Order order = orders.get(1);
 
-        Payment payment = paymentRepository.addPayment(order, "voucherCode", paymentData);
+        Payment payment = paymentRepository.addPayment(order, "voucherCode", this.paymentDataList.get(0));
         Payment result = paymentRepository.getPayment(payment.getId());
 
         assertEquals(payment.getId(), result.getId());
@@ -80,7 +75,7 @@ public class PaymentRepositoryTest {
     void testGetPaymentIfIdNotFound() {
         Order order = orders.get(1);
 
-        Payment payment = paymentRepository.addPayment(order, "voucherCode", paymentData);
+        Payment payment = paymentRepository.addPayment(order, "voucherCode", this.paymentDataList.get(1));
         Payment result = paymentRepository.getPayment("zczc");
 
         assertNull(result);
@@ -88,11 +83,16 @@ public class PaymentRepositoryTest {
 
     @Test
     void testGetAllPayments() {
+        Map<String, String> voucherCode = new HashMap<>();
+        voucherCode.put("voucherCode", "ESHOP1234ABC5678");
+        Map<String, String> cashOnDelivery = new HashMap<>();
+        cashOnDelivery.put("address", "depok");
+        cashOnDelivery.put("deliveryFee", "12000");
         Order order1 = orders.get(0);
         Order order2 = orders.get(1);
 
-        paymentRepository.addPayment(order1, "voucherCode", paymentDatas.get(0));
-        paymentRepository.addPayment(order2, "cashOnDelivery", paymentDatas.get(1));
+        paymentRepository.addPayment(order1, "voucherCode", voucherCode);
+        paymentRepository.addPayment(order2, "cashOnDelivery", cashOnDelivery);
 
         List<Payment> allPayments = paymentRepository.getAllPayments();
         assertEquals(2, allPayments.size());
